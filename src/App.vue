@@ -1,18 +1,20 @@
 <template>
   <div id="app">
     <TokenIssue v-if="this.tokenId" :token-id="tokenId" />
-    <HelloWorld v-else />
+    <Login v-else />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import Login from './components/Login.vue';
 import  TokenIssue from './components/TokenIssue.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
+    Login,
     TokenIssue,
   },
   data() {

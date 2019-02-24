@@ -57,11 +57,15 @@ export default {
             this.timerInterval = setInterval(() => {
                 this.countdown -= 1
             }, 1000)
-            this.refreshOTPInterval = setInterval(() => {
-                const otp = otplib.totp.generate(secretKey)
-                this.otp = otp
-                this.countdown = 30 - ~~(Date.now()/1000) % 30
-            }, 30000)
+            const remain = 30 - ~~(Date.now()/1000) % 30
+            setTimeout(() => {
+                console.log('Go in refresh OTP')
+                this.refreshOTPInterval = setInterval(() => {
+                    const otp = otplib.totp.generate(secretKey)
+                    this.otp = otp
+                    this.countdown = 30
+                }, 30000)
+            }, remain)
       },
       signOut() {
           localStorage.removeItem('tokenId')
