@@ -1,16 +1,18 @@
-<template>
+<template> <!-- About mark up, html... write in this template tag. -->
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!---------------^^^^^^^^^^^^^^^^^^^^^^^^^^^ pass property msg with message to HelloWorld component --->
+    <!-- Open /src/components/HelloWorld.vue to see the way it receives this props -->
   </div>
 </template>
 
 <script>
+// To use custom component, you need to import first
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
+  components: { // Declare the imported component name here to be able to use in <template>....</template>
     HelloWorld
   }
 }
