@@ -18,7 +18,7 @@ export default {
       return {
           otp: null,
           refreshOTPInterval: null,
-          countdown: 30,
+          countdown: 30 - ~~(Date.now()/1000) % 30,
           timerInterval: null,
       }
   },
@@ -60,7 +60,7 @@ export default {
             this.refreshOTPInterval = setInterval(() => {
                 const otp = otplib.totp.generate(secretKey)
                 this.otp = otp
-                this.countdown = 30
+                this.countdown = 30 - ~~(Date.now()/1000) % 30
             }, 30000)
       },
       signOut() {
