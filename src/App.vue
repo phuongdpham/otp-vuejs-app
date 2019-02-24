@@ -1,20 +1,36 @@
-<template> <!-- About mark up, html... write in this template tag. -->
+<template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <!---------------^^^^^^^^^^^^^^^^^^^^^^^^^^^ pass property msg with message to HelloWorld component --->
-    <!-- Open /src/components/HelloWorld.vue to see the way it receives this props -->
+    <TokenIssue v-if="this.tokenId" :token-id="tokenId" />
+    <HelloWorld v-else />
   </div>
 </template>
 
 <script>
-// To use custom component, you need to import first
 import HelloWorld from './components/HelloWorld.vue'
+import  TokenIssue from './components/TokenIssue.vue'
 
 export default {
   name: 'app',
-  components: { // Declare the imported component name here to be able to use in <template>....</template>
-    HelloWorld
-  }
+  components: {
+    HelloWorld,
+    TokenIssue,
+  },
+  data() {
+    return {
+      tokenId: null,
+    }
+  },
+  mounted() {
+    const uri = window.location.search.substring(1)
+    const params = new URLSearchParams(uri)
+    const tokenId = params.get('token-id')
+    if (tokenId) {
+      localStorage.setItem('tokenId', tokenId)
+    }
+
+    const localTokenId = localStorage.getItem('tokenId')
+    this.tokenId = localTokenId
+  },
 }
 </script>
 

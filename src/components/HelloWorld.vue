@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div class="red-text">Red hello world text (check css bellow)</div>
+    <a class="btn-sign-in" href="https://id.vndirect.com.vn/login?httpReferer=http://localhost:8080/callback">Sign in with VNDirect</a>
   </div>
 </template>
 
@@ -15,6 +15,9 @@ export default {
 
 <style lang="stylus">
 .hello
-  .red-text
-    color red
+  .btn-sign-in
+    background orange
+    color #FFF
+    padding 1rem 2rem
+    text-decoration none
 </style>
