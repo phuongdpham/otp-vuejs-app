@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <a class="btn-sign-in" href="https://id.vndirect.com.vn/login?httpReferer=http://localhost:8080/callback">Sign in with VNDirect</a>
+    <a class="btn-sign-in" href="https://id-uat.vndirect.com.vn/login?httpReferer=http://localhost:8080/callback">Sign in with VNDirect</a>
   </div>
 </template>
 

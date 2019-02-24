@@ -23,7 +23,7 @@ export default {
       }
   },
   async mounted() {
-      const TEST_MODE = true
+      const TEST_MODE = false
       let secretKey = localStorage.getItem('secretKey')
       if (TEST_MODE) {
           secretKey = 'KVKFKRCPNZQUYMLXOVYDSQKJKZDTSRLD'
@@ -43,7 +43,7 @@ export default {
       }
 
       if (secretKey) {
-            const otp = otplib.authenticator.generate(secretKey)
+            const otp = otplib.totp.generate(secretKey)
             this.otp = otp
             this.generateOtp(secretKey)
       }
@@ -58,7 +58,7 @@ export default {
                 this.countdown -= 1
             }, 1000)
             this.refreshOTPInterval = setInterval(() => {
-                const otp = otplib.authenticator.generate(secretKey)
+                const otp = otplib.totp.generate(secretKey)
                 this.otp = otp
                 this.countdown = 30
             }, 30000)
