@@ -1,39 +1,44 @@
 <template>
   <div id="app">
-    <TokenIssue v-if="this.tokenId" :token-id="tokenId" />
-    <Login v-else />
+    <TokenIssue v-if="this.tokenId" :token-id="tokenId"/>
+    <HelloWorld v-else/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
 import Login from './components/Login.vue';
-import  TokenIssue from './components/TokenIssue.vue'
+import TokenIssue from './components/TokenIssue.vue';
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
     Login,
-    TokenIssue,
+    TokenIssue
   },
   data() {
     return {
-      tokenId: null,
-    }
+      tokenId: null
+    };
   },
   mounted() {
-    const uri = window.location.search.substring(1)
-    const params = new URLSearchParams(uri)
-    const tokenId = params.get('token-id')
-    if (tokenId) {
-      localStorage.setItem('tokenId', tokenId)
-    }
+    const localTokenId = localStorage.getItem('tokenId');
 
-    const localTokenId = localStorage.getItem('tokenId')
-    this.tokenId = localTokenId
-  },
-}
+    if (!localTokenId) {
+      const uri = window.location.search.substring(1);
+      const params = new URLSearchParams(uri);
+      const tokenId = params.get('token-id');
+      if (tokenId) {
+        console.log('Set token id');
+        localStorage.setItem('tokenId', tokenId);
+        this.tokenId = tokenId;
+      }
+    } else {
+      this.tokenId = localTokenId;
+    }
+  }
+};
 </script>
 
 <style>
