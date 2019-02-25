@@ -75,7 +75,7 @@ export default {
       console.log("Remain: ", this.countdown);
       setTimeout(() => {
         console.log("Set timeout remain: ", remain);
-      }, remain);
+      }, remain * 1000);
     },
     signOut() {
       localStorage.removeItem("tokenId");

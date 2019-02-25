@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TokenIssue v-if="this.tokenId" :token-id="tokenId"/>
-    <HelloWorld v-else/>
+    <Login v-else/>
   </div>
 </template>
 
