@@ -17,12 +17,10 @@ export default {
 </script>
 
 <style lang="stylus">
-.hello {
-  .btn-sign-in {
-    background: orange;
-    color: #FFF;
-    padding: 1rem 2rem;
-    text-decoration: none;
-  }
-}
+.hello
+  .btn-sign-in
+    background orange
+    color #FFF
+    padding 1rem 2rem
+    text-decoration none
 </style>
