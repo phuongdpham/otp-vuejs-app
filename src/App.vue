@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <TokenIssue v-if="this.tokenId" :token-id="tokenId"/>
-    <Login v-else/>
+    <TokenIssue v-if="tokenId" :token-id="tokenId" />
+    <Login
+      v-else
+      @setToken="setToken"
+    />
   </div>
 </template>
 
@@ -37,7 +40,12 @@ export default {
     } else {
       this.tokenId = localTokenId;
     }
-  }
+  },
+  methods: {
+    setToken(token) {
+      this.tokenId = token
+    },
+  },
 };
 </script>
 

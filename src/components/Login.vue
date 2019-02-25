@@ -27,7 +27,9 @@ export default {
           "https://online-account-uat.vndirect.com.vn/login",
           this.input
         );
-        console.log(response.data);
+        
+        localStorage.setItem('tokenId', response.data);
+        this.$emit('setToken', response.data)
       } catch (err) {
         console.error(err);
       }
